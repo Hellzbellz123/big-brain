@@ -145,6 +145,7 @@ pub fn spawn_action<T: ActionBuilder + ?Sized>(
     builder.build(cmd, action_ent.entity(), actor);
     std::mem::drop(_guard);
     cmd.entity(action_ent.entity()).insert(span);
+    cmd.entity(actor).add_child(action_ent.0);
     action_ent.entity()
 }
 

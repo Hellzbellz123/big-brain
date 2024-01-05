@@ -115,6 +115,7 @@ pub fn spawn_scorer<T: ScorerBuilder + ?Sized>(
     builder.build(cmd, scorer_ent, actor);
     std::mem::drop(_guard);
     cmd.entity(scorer_ent).insert(span);
+    cmd.entity(actor).add_child(scorer_ent);
     scorer_ent
 }
 
